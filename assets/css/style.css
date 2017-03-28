@@ -1,0 +1,72 @@
+/*-------------
+ 	General styles for elements and such
+-------------*/
+
+*{
+}
+
+html  {
+
+}
+
+.btn-primary-spacing {
+  margin-top: 10px;
+}
+
+body {
+
+}
+
+div {
+}
+
+.container {
+
+}
+
+.row {
+
+}
+
+/*Because we are using bootstrap, the definition of the general column name does not exist.*/
+
+h1,h2,h3,h4,h5 {
+}
+
+h1 {
+}
+
+h2 {
+}
+
+h3 {
+}
+
+h4 {
+}
+
+h5 {
+}
+
+
+/*-------------------
+Section-specific styles
+---------------------*/
+.form-control{
+    width: 50%;
+    margin-bottom: 15px;
+    text-align: center;
+
+}
+.jumbotron{
+  text-align: center;
+
+}
+
+
+
+
+
+/*---------------------------
+Device-specific customizations
+------------------------------*/

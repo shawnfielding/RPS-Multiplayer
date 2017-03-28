@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>RPS</title>
+    <!--  Firebase connection -->
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+
+    <!-- reset css -->
+    <link href="assets/css/reset.css" rel="stylesheet" type="text/css">
+
+    <!-- bootstrap css -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- local css -->
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="jumbotron text-center">
+            <h2>
+					wanna play some rock-paper scissors?
+				</h2>
+            <div class="form-group">
+              <input type="text" class="form-control" id="yourName" Placeholder="place your name here to join">
+              <button type="button" id="joinGame" class="btn btn-primary btn-lg">add yourself to the game</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center" id="playerName"></div>
+      </div>
+      <div class="row" id="battlegroundRow">
+        <div class="col-md-4"><img src="assets/images/rock.png" class="big3" id="r"></div>
+        <div class="col-md-4"><img src="assets/images/paper.png" class="big3" id="p"></div>
+        <div class="col-md-4"><img src="assets/images/scissors.png" class="big3" id="s"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center" id="otherPlayerName"></div>
+      </div>
+      <div class="container">
+        <div class="addNameRow" id="statsRow">
+          <div class="stats" id="player1Name"></div>
+          <div class="stats" id="player1Wins"></div>
+          <div class="stats" id="player1Losses"></div>
+          <div class="stats" id="player1Ties"></div>
+          <div class="stats" id="player1Time"></div>
+        </div>
+        <div class="row">
+          <div class="col-md-4" id="enterNameCol">
+            <div class="stats" id="player2Name"></div>
+            <div class="stats" id="player2Wins"></div>
+            <div class="stats" id="player2Losses"></div>
+            <div class="stats" id="player2Name"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <!-- jQuery call -->
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous">
+        </script>
+
+        <!-- DB connection -->
+        <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyD4EvFbE7Eh9QLrBhZTCt14AUYsjS-uju8",
+          authDomain: "rockpaperscissors-b291f.firebaseapp.com",
+          databaseURL: "https://rockpaperscissors-b291f.firebaseio.com",
+          storageBucket: "",
+          messagingSenderId: "424794686271"
+        };
+        firebase.initializeApp(config);
+        </script>
+        <!-- I was going to do some very cool with time, controlling the game length and all that, but alas, that was way down the list of things that weren't happening. -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+    <!-- `  This was going to be cool too.  I was able to set cookies with the URL of the DB instancee of the person.  If the cookie existed they would still keep stats going for the day.  Woulda been cool` -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+        <!-- All the other stuff that didn't get done -->
+        <script src="assets/javascript/app.js"></script>
+
+
+  </body>
+
+</html>

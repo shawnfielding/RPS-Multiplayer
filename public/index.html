@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+<!--  This template contains the the jquery connection and bootstrap css and javascript to
+pretty much to anything either can handle.  Remove this comment when necessary.
+  -->
+
+  <title>MoveMe</title>
+
+<!----------------------------------------------- jQuery  -------------------------------------------------->
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous">
+</script>
+
+<!-----------------------------------------------Bootstrap javascript ---------------------------------->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<!-- --------------------------------------------- Stylesheets ----------------------------------------->
+    <!-- Bootstrap css -->
+   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Local css -->
+<link href="assets/css/reset.css" rel="stylesheet" type="text/css">
+<link href="assets/css/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body
+<!--  Basic Bootcamp template with random bells and whisltes  -->
+<!---- Header with navigation ---->
+<!----  Jumbotron ------->
+<!---- Image Carousel    -->
+<!---- General three column row -->
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="jumbotron">
+				<h2>
+					WANNA PLAY SOME ROCK/PAPER/SCISSORS?
+				</h2>
+        <form>
+        <label for="name" First name:<br></label>
+          <input type="text" name="name" id="nameInput"><br>
+          <button type="button" id="joinGame" class="btn btn-primary btn-lg">Large</button>
+        </form>
+			</div>
+		</div>
+	</div>
+  <div class="addNameRow" id="row1">
+		<div class="col-md-4">
+      <div class="col-md-4" id="enterNameCol">
+          <div  id="player1Name"></div>
+          <div  id="player1Wins"></div>
+          <div  id="player1Losses"></div>
+          <div  id="player1Name"></div>
+			<p>
+			</p>
+			<p>
+          <a class="btn" id="logout1" href="#">Log Me Out</a>
+			</p>
+		</div>
+         <h2>
+				Join by putting your name below:
+			</h2>
+			<p>
+				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+			</p>
+			<p>
+
+			</p>
+		</div>
+		<div class="col-md-4">
+      <div class="col-md-4" id="enterNameCol">
+          <div  id="player2Name"></div>
+          <div  id="player2Wins"></div>
+          <div  id="player2Losses"></div>
+          <div  id="player2Name"></div>
+			<p>
+			</p>
+			<p>
+          <a class="btn" id="logout2"  href="#">Log Me Out</a>
+			</p>
+		</div>
+
+	<div class="row">
+		<div class="col-md-4">
+			<h2>
+				Heading
+			</h2>
+			<p>
+Player 1's spot
+			</p>
+			<p>
+          pictures or works
+			</p>
+		</div>
+		<div class="col-md-4">
+			<h2>
+				Win Or Loss
+			</h2>
+			<p>
+Where a win or loss pic shows
+			</p>
+			<p>
+				<a class="btn" href="#">Me too</a>
+			</p>
+		</div>
+		<div class="col-md-4">
+			<h2>
+				Heading
+			</h2>
+			<p>
+				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+			</p>
+			<p>
+				<a class="btn" href="#">Me 3</a>
+			</p>
+		</div>
+	</div>
+</div>
+
+<!------------------------------------- Connection to db ------------------------------------------>
+<script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyD4EvFbE7Eh9QLrBhZTCt14AUYsjS-uju8",
+    authDomain: "rockpaperscissors-b291f.firebaseapp.com",
+    databaseURL: "https://rockpaperscissors-b291f.firebaseio.com",
+    storageBucket: "rockpaperscissors-b291f.appspot.com",
+    messagingSenderId: "424794686271"
+  };
+  firebase.initializeApp(config);
+</script>
+
+        <script>
+// ------------------------------------------------------------ Variables and Objects -------------------------------
+  var database = firebase.database()
+  var player = {
+    name: "",
+    number: 0,
+    wins: 0,
+    losses: 0,
+    ties: 0,
+    comment: "",
+    dateAdded: firebase.database.ServerValue.TIMESTAMP,
+  }
+
+
+
+// ------------------------------------------ Functions -----------------------------------------
+  function addPlayer(){
+    event.preventDefault();
+      player.name = $("#nameInput").val().trim();
+      database.ref().push({player});
+  };
+
+function removePlayer(){};
+function childrenCount(){};
+
+
+
+
+// --------------------- after your functions, your start commands and listeners ------------------
+
+  $("#joinGame").on("click", function (){
+    addPlayer();
+
+    database.ref().on("child_added", function(childSnapshot){
+    console.log(childSnapshot.val().player.name);
+    console.log(childSnapshot.val().player.number);
+    console.log(childSnapshot.val().player.wins);
+    console.log(childSnapshot.val().player.losses);
+    console.log(childSnapshot.val().player.comment);
+    console.log(childSnapshot.val().player. joinDate);
+
+
+    $("#player1Name").html(snapshot.val().player.name);
+    $("#player1wins").html(snapshot.val().player.wins);
+    $("#age-display").html(snapshot.val().player.losses);
+    $("#comment-display").html(snapshot.val().player.ties);
+
+    console.log("there");
+    alert("Hi, "+ player.name+"!");
+    }, function(errorObject) {
+      console.log("Errors handled: " + errorObject.code);
+    });
+  })
+        </script>
+
+</body>
+</html>
